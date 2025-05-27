@@ -11,42 +11,43 @@ body {
 
 body {
   font-family: Verdana, sans-serif;
-  background-color: #fb4f93;
+  background-color: hsl(102, 29%, 42%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 h1 {
-  color: #fff;
-  font-size: 50px;
+  color: #f3ece4;
+  font-size: 35px;
   text-align: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 h3{
-  color: #fff;
-  font-size: 20px;
+  color: #f3ece4;
+  font-size: 15px;
   text-align: center;
   margin-bottom: 1rem;
+  font-weight: normal;
 }
 
 .container {
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 550px;
   /* background-color: #00e6e4; */
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: .5em;
 }
 
 .card{
-  background-color: #fff;
+  background-color: hsl(33, 67%, 94%);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius:5px ;
+  border-radius:3px ;
   transform: rotateY(180deg);
   animation:2s hideCard linear;
   transition:transform 0.5s;
@@ -61,8 +62,8 @@ h3{
 }
 
 .card img{
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 75%;
+  max-height: 75%;
   transform: scale(0);
   animation:2s hideImage linear;
    transition:transform 0.5s;
@@ -88,4 +89,156 @@ h3{
 }
 .card.active img{
   transform: scale(1);
+}
+
+.btn{
+  background-color: hsl(32, 38%, 92%);
+  color: hsl(239, 74%, 17%);
+  font-weight: bolder;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 1em;
+}
+
+
+
+/* Add these to your existing App.css */
+
+
+.game-over-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: hsl(239, 74%, 17%);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 100;
+  color: hsl(32, 38%, 92%);
+  width: 80%;
+  max-width: 400px;
+}
+
+.game-over-message h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: hsl(32, 38%, 92%);
+}
+
+
+
+.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Add some animation for the win/lose messages */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.game-over-message {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Add these styles to your existing App.css */
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.btn-stop {
+  background-color: #e63946; /* Red color for stop button */
+  color:hsl(32, 38%, 92%)
+}
+
+.btn-stop:hover {
+  background-color: #d62839; /* Darker red on hover */
+}
+
+
+/* Timer selector styles */
+.timer-selector {
+  margin: 1rem 0;
+  color: hsl(32, 38%, 92%);
+  /* background-color: hsl(182, 38%, 49%);  */
+  /* padding: .5rem; */
+  /* border-radius: 5px; */
+  /* width: 100%;
+  max-width: 250px; */
+  /* margin: 1rem auto; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  gap: .5rem;
+  font-size: 1rem;
+  font-weight: bold;
+
+}
+
+/* Timer label */
+.timer-selector label {
+  color: #f3ece4;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+
+
+.timer-selector select {
+  width: 120px;
+  padding: .5rem;
+  border-radius: 5px;
+  background-color: hsl(102, 29%, 42%);
+  color: hsl(32, 37%, 92%);
+  font-size: 1rem;
+  border: 1px solid hsl(32, 38%, 92%);
+  /* background-color: hsl(182, 38%, 49%); */
+    cursor: pointer;
+}
+
+.time-left h3{
+  color: #D83A56;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+.container {
+  height: auto;
+  width: auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+ 
+.card{
+  width: auto;
+  height: auto;
+}
+
+h1{
+  font-size: 35px;
+}
+
 }
