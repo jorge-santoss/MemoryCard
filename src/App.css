@@ -1,7 +1,7 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
-} */
+}
 
 
 html,
@@ -225,7 +225,7 @@ h3{
   
   .btn {
     margin-bottom: 0.5rem;
-    width: 100%;
+    width: 96%;
   }
 
 .container {
@@ -233,8 +233,8 @@ h3{
   width: auto;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-   /* margin-left: 0.5em;
-  margin-right: 0.5em; */
+   margin-left: 0.5em;
+  margin-right: 0.5em;
 }
  
 .card{
