@@ -41,18 +41,14 @@ function App() {
     setCards(Math.random()); // Reshuffle cards
   };
 
-  // Restart game (for Win/Lose screens)
-  // const handleRestartGame = () => {
-  //   handleStartGame();
-  // };
-
+  // Restart game handler
   const handleRestartGame = () => {
-  setGameStarted(false);       // Ensure game doesn't auto-start
-  setGameOver(false);          // Hide "You Lose!" message
-  setGameWon(false);           // Reset win state
-  setTimeLeft(selectedTime);   // Reset timer to selected value
-  setCards(Math.random());     // Reshuffle cards
-};
+    setGameStarted(false);       // Ensure game doesn't auto-start
+    setGameOver(false);          // Hide "You Lose!" message
+    setGameWon(false);           // Reset win state
+    setTimeLeft(selectedTime);   // Reset timer to selected value
+    setCards(Math.random());     // Reshuffle cards
+  };
 
   // Win condition check
   const checkWinCondition = (items) => {
@@ -66,15 +62,15 @@ function App() {
   return (
     <div className="App">
       {/* Main game UI (hidden when game over) */}
-      {!gameOver && (
-        <>
+      {!gameOver ? (
+        <div className="game-wrapper">
           <h1>Memory Game</h1>
           <h3>Try to match all the pairs of cards!</h3>
        
           {/* Timer selection (only shown before game starts) */}
           {!gameStarted && (
             <div className="timer-selector">
-              <label>Select Timer: </label> {/* Label now on its own line */}
+              <label>Select Timer: </label>
               <select
                 value={selectedTime}
                 onChange={(e) => setSelectedTime(Number(e.target.value))}
@@ -89,24 +85,28 @@ function App() {
           )}
 
           {/* Active game info */}
-          {gameStarted &&(<div className='time-left'> <h3>Time left: {timeLeft} seconds</h3></div>)}
+          {gameStarted && (
+            <div className='time-left'>
+              <h3>Time left: {timeLeft} seconds</h3>
+            </div>
+          )}
 
           {/* Game controls */}
           <div className="button-group">
-  {/* Show Start Game only when game is NOT running */}
-  {!gameStarted && (
-    <button className="btn" onClick={handleStartGame}>
-      Start Game
-    </button>
-  )}
-  
-  {/* Show Stop Game only when game is running */}
-  {gameStarted && (
-    <button className="btn btn-stop" onClick={handleStopGame}>
-      Stop Game
-    </button>
-  )}
-</div>
+            {/* Show Start Game only when game is NOT running */}
+            {!gameStarted && (
+              <button className="btn" onClick={handleStartGame}>
+                Start Game
+              </button>
+            )}
+            
+            {/* Show Stop Game only when game is running */}
+            {gameStarted && (
+              <button className="btn btn-stop" onClick={handleStopGame}>
+                Stop Game
+              </button>
+            )}
+          </div>
 
           {/* Cards component */}
           <Cards 
@@ -114,11 +114,9 @@ function App() {
             onGameStateChange={checkWinCondition} 
             gameStarted={gameStarted} 
           />
-        </>
-      )}
-
-      {/* Win/Lose screen (shown only when game ends naturally) */}
-      {gameOver && (
+        </div>
+      ) : (
+        /* Win/Lose screen (shown only when game ends naturally) */
         <div className="game-over-message">
           <h2>{gameWon ? 'Congratulations You Win!' : 'Game Over!'}</h2>
           <button className="btn" onClick={handleRestartGame}>

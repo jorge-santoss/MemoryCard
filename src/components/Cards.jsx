@@ -22,8 +22,6 @@ function Cards({ onGameStateChange, gameStarted }) {
         { id: 9, img: "/img/mushroom.png", stat: "" },
         { id: 10, img: "/img/video-game.png", stat: "" },
         { id: 10, img: "/img/video-game.png", stat: "" },
-        // { id: 11, img: "/img/arcade.png", stat: "" },
-        // { id: 11, img: "/img/arcade.png", stat: "" },
         { id: 12, img: "/img/game.png", stat: "" },
         { id: 12, img: "/img/game.png", stat: "" },
         { id: 12, img: "/img/pikachu.png", stat: "" },
