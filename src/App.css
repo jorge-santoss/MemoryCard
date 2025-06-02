@@ -36,10 +36,10 @@ h3{
 
 .container {
   height: 400px;
-  width: 550px;
+  width: 900px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: .5em;
 }
 
@@ -52,6 +52,7 @@ h3{
   transform: rotateY(180deg);
   animation:2s hideCard linear;
   transition:transform 0.5s;
+
 }
 @keyframes hideCard{
   0%, 70%{
@@ -175,8 +176,8 @@ h3{
   max-width: 250px; */
   /* margin: 1rem auto; */
   display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: .5rem;
   font-size: 1rem;
