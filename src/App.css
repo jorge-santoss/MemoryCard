@@ -258,7 +258,7 @@ h3 {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     aspect-ratio: 2/3;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
   }
 
@@ -267,8 +267,8 @@ h3 {
   }
 
   .card img {
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 70%;
+    max-height: 70%;
   }
 
   h1 {
