@@ -7,6 +7,11 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [cards, setCards] = useState(null);
+  
+const [score, setScore] = useState(0);
+const [highScore, setHighScore] = useState(0);
+const [startTime, setStartTime] = useState(null);
+
 
   // Timer state
   const [timeLeft, setTimeLeft] = useState(60);
@@ -26,13 +31,16 @@ function App() {
     return () => clearInterval(timer);
   }, [gameStarted, timeLeft, gameWon]);
 
+  
   // Start game handler
-  const handleStartGame = () => {
-    setTimeLeft(selectedTime); // Use selected time
-    setGameStarted(true);
-    setGameOver(false);
-    setGameWon(false);
-  };
+ const handleStartGame = () => {
+  setTimeLeft(selectedTime);
+  setGameStarted(true);
+  setGameOver(false);
+  setGameWon(false);
+  setScore(0);
+  setStartTime(Date.now());
+};
 
   // Stop game handler (resets without "Lose" message)
   const handleStopGame = () => {
@@ -55,13 +63,22 @@ function App() {
 };
 
   // Win condition check
-  const checkWinCondition = (items) => {
-    const allCorrect = items.every(item => item.stat === "correct");
-    if (allCorrect) {
-      setGameWon(true);
-      setGameOver(true);
+  // Modify the checkWinCondition function to calculate final score:
+const checkWinCondition = (items) => {
+  const allCorrect = items.every(item => item.stat === "correct");
+  if (allCorrect) {
+    const endTime = Date.now();
+    const timeTaken = (endTime - startTime) / 1000; // in seconds
+    const newScore = Math.floor((selectedTime - timeTaken) * 10); // Higher score for faster completion
+    
+    setScore(newScore);
+    if (newScore > highScore) {
+      setHighScore(newScore);
     }
-  };
+    setGameWon(true);
+    setGameOver(true);
+  }
+};
 
   return (
     <div className="App">
@@ -70,7 +87,10 @@ function App() {
         <>
           <h1>Memory Game</h1>
           <h3>Try to match all the pairs of cards!</h3>
-       
+       <div className="score-display">
+  <h3>High Score: <span className="high-score">{highScore}</span></h3>
+  {gameStarted && <h3>Current Score: {score}</h3>}
+</div>
           {/* Timer selection (only shown before game starts) */}
           {!gameStarted && (
             <div className="timer-selector">
@@ -119,13 +139,14 @@ function App() {
 
       {/* Win/Lose screen (shown only when game ends naturally) */}
       {gameOver && (
-        <div className="game-over-message">
-          <h2>{gameWon ? 'Congratulations You Win!' : 'Game Over!'}</h2>
-          <button className="btn" onClick={handleRestartGame}>
-            {gameWon ? 'Restart Game' : 'Try Again'}
-          </button>
-        </div>
-      )}
+  <div className="game-over-message">
+    <h2>{gameWon ? `Congratulations You Win! Score: ${score}` : 'Game Over!'}</h2>
+    {gameWon && highScore === score && <h3 className="new-high-score">New High Score!</h3>}
+    <button className="btn" onClick={handleRestartGame}>
+      {gameWon ? 'Restart Game' : 'Try Again'}
+    </button>
+  </div>
+)}
     </div>
   );
 }

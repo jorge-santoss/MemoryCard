@@ -216,6 +216,50 @@ h3{
   text-shadow: 2px 2px 4px #d1c1c1;
 }
 
+/* Add these styles to App.css */
+.score-display {
+  color: #f3ece4;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5rem 0;
+  text-shadow: 2px 2px 4px #222121;
+}
+
+.score-display h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.high-score  {
+  color: gold;
+  font-weight: bold;
+}
+
+.new-high-score {
+  color: gold;
+  font-size: 1.5rem;
+  animation: pulse 1s infinite alternate;
+  margin: 1rem 0;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Responsive tweaks */
 @media (max-width: 600px) {
   .button-group {
