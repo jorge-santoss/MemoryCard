@@ -264,11 +264,11 @@ h3 {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  body {
+  /* body {
     padding: 1rem;
     min-height: 100vh;
     justify-content: flex-start;
-  }
+  } */
 
   h1 {
     font-size: 2rem;
