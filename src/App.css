@@ -45,7 +45,7 @@ h3 {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: .5em;
-  /* margin: 1rem auto; */
+  margin: 1rem auto;
 }
 
 .card {
@@ -104,25 +104,46 @@ h3 {
   transform: scale(1);
 }
 
+/* BUTTON STYLES */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
 .btn {
   background-color: hsl(32, 38%, 92%);
   color: hsl(239, 74%, 17%);
   font-weight: bolder;
   border: none;
-  padding: 10px 24px;
+  padding: 12px 24px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  width: auto;
   min-width: 200px;
-  /* margin: 0.5rem auto; */
+  max-width: 280px;
+  width: 100%;
+  margin: 0.25rem auto;
   display: block;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
   background-color: hsl(42, 78%, 92%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-stop {
+  background-color: #e63946;
+  color: hsl(32, 38%, 92%);
+}
+
+.btn-stop:hover {
+  background-color: #d62839;
 }
 
 .game-over-message {
@@ -164,31 +185,12 @@ h3 {
   animation: fadeIn 0.5s ease-in;
 }
 
-.button-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 1rem 0;
-}
-
-.btn-stop {
-  background-color: #e63946;
-  color: hsl(32, 38%, 92%);
-}
-
-.btn-stop:hover {
-  background-color: #d62839;
-}
-
 .timer-selector {
   margin: 1rem 0;
   color: hsl(32, 38%, 92%);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: .5rem;
   font-size: 1rem;
   font-weight: bold;
@@ -266,7 +268,6 @@ h3 {
     padding: 1rem;
     min-height: 100vh;
     justify-content: flex-start;
-    
   }
 
   h1 {
@@ -298,16 +299,18 @@ h3 {
     max-height: 60%;
   }
 
-  /* .button-group {
-    flex-direction: column;
+  .button-group {
     width: 100%;
     max-width: 300px;
+    margin: 1rem auto;
+    padding: 0;
   }
 
   .btn {
     width: 100%;
-    max-width: 300px;
-  } */
+    max-width: 100%;
+    padding: 12px 0;
+  }
 
   .game-over-message {
     width: 90%;
@@ -327,18 +330,5 @@ h3 {
 
   .container {
     gap: 0.3rem;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .button-group {
-    padding: 0 1rem;
-  }
-  
-  .btn {
-    width: 100%;
-    max-width: 280px;
-    padding: 12px 0;
   }
 }
